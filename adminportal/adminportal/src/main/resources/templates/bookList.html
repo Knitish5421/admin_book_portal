@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header::common-header">
+
+<body>
+<div th:replace="common/header::navbar" />
+<div class="container">
+<div class="table-responsive">
+	<table id="bookListTable" class="table table-bordered table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+    <!-- <th><input th:id="selectAllBooks" type="checkbox"></th> -->
+      <th>Title</th>
+      <th>Author</th>
+      <th>Category</th>
+      <th>List Price</th>
+      <th>Our Price</th>
+      <th>Active</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr data-th-each="book:${bookList}">
+ <!--  <td type="hidden">
+    <input hidden="hidden" name="id" th:value="${book.id}" />
+    <input th:id="'selected' + ${book.id}" class="checkboxBook" type="checkbox"/>  
+   </td> -->
+   
+   <td><a th:href="@{/book/bookInfo(id=${book.id})}"><span th:text="${book.title}"></span></a></td>
+   <td th:text="${book.author}"></td>
+   <td th:text="${book.category}"></td>
+   <td th:text="${book.listPrice}"></td>
+   <td th:text="${book.ourPrice}"></td>
+   <td th:text="${book.active}"></td>
+   <td>
+     <!--  <input  hidden="hidden" name="id" th:value="${book.id}" />
+      <button th:id="oneBook-+${book.id}" class="btn btn-danger btn-xs delete-book" type="submit" value="delete">
+      <span class="fa fa-times"></span>delete</button> -->
+      
+      <a th:href="@{/book/removBook?id=}+${book.id}" class="btn btn-danger btn-xs delete-book" >
+      <span class="fa fa-times"></span>delete</a>
+   </td>
+  </tr>
+  
+  </tbody>
+</table>
+</div> 
+<!-- <button th:id="deleteSelected" class="btn btn-danger">delete</button> -->
+</div>
+<div th:replace="common/header::body-bottom-scripts" />
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#bookListTable').DataTable({
+        "ordering": false,
+        stateSave:true
+    	
+    });
+} );
+</script>
+</body>
+</html>

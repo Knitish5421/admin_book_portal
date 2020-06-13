@@ -1,0 +1,85 @@
+
+<!doctype html>
+<!-- <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"> -->
+
+<!-- 	<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+
+<!--   <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org"> -->
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:fragment="common-header">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>ADMIN PORTAL For NROCK BOOKSTORE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--   alertBox	 -->
+<link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js">
+
+	
+<link rel="stylesheet" type="text/css" media="all"  
+       th:href="@{/css/style.css}" />
+       
+    <!--    Data Table -->
+    <link rel="stylesheet" type="text/css" media="all"  
+       th:href="@{/css/dataTables.bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all"  
+       th:href="@{/css/jquery.dataTables.min.css}" />
+       
+     <link rel="stylesheet" type="text/css" media="all"  
+       th:href="@{/css/fontawesome.min.css}" />  
+      
+   <!--    description formater pluging CDN(TinyMCE site) -->
+ <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+
+
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+
+				<ul class="nav navbar-nav">	
+					<li><a class="navbar-brand" th:href="@{/}">Admin Portal</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Book <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a th:href="@{/book/add}">Add a new book</a>
+							<li>
+							<li><a th:href="@{/book/bookList}">view book list</a>
+							<li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/logout}"><span class="glyphicon glyphicon-user"></span>
+							Sign out</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+	<div th:fragment="body-bottom-scripts">
+		<script th:src="@{/js/jquery.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		      <!-- Data Table -->
+        <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+        
+         <script th:src="@{/js/script.js}"></script>
+	</div>
+</body>
+</html>
